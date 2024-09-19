@@ -1,0 +1,77 @@
+<div id="crud-form">
+    <div id="adocao-titulo">
+        Formulário de adoção
+    </div>
+    <div id="adocao-form">
+        <form id="adocao-form-1">
+            <label for="f_residencia" class="crud-question">Qual o seu tipo de moradia?</label>
+            <input type="radio" id="casa" name="f_residencia" value="casa" checked>
+            <label for="casa">Casa</label>
+            <input type="radio" id="apartamento" name="f_residencia" value="apartamento">
+            <label for="apartamento">Apartamento</label>
+            <input type="radio" id="outros" name="f_residencia" value="outros">
+            <label for="outros">Outros</label>
+            <input type="text" id="outros_value_residencia" name="f_residencia" class="text-input"
+                style="display:none">
+
+            <label for="f_exp" class="crud-question">Você tem experiência com animais?</label>
+            <input type="radio" id="f_nao" name="f_exp" value="false" checked>
+            <label for="f_nao">Não tenho</label>
+            <input type="radio" id="f_sim" name="f_exp" value="true">
+            <label for="f_sim">Sim, já tive animais</label>
+            <input type="text" id="sim_exp" name="f_exp" class="text-input" style="display:none"
+                placeholder:='Qual?'>
+
+            <label for="f_visita_ong" class="crud-question">Concorda em receber visitas da ONG caso
+                necessário?</label>
+            <input type="radio" id="f_sim" name="f_visita_ong" value="true">
+            <label for="f_sim">Sim</label>
+            <input type="radio" id="f_nao" name="f_visita_ong" value="false" checked>
+            <label for="f_nao">Não</label>
+
+            <label for="f_consentimento" class="crud-question">Todos da sua casa estão cientes e concordam com a
+                adoção?</label>
+            <input type="radio" id="f_sim" name="f_consentimento" value="true">
+            <label for="f_sim">Sim</label>
+            <input type="radio" id="f_nao" name="f_consentimento" value="false" checked>
+            <label for="f_nao">Não</label>
+
+        </form>
+        <form id="adocao-form-2">
+            <label for="f_tempo" class="crud-question">Quanto tempo você tem para passar com seu animal?</label>
+            <input type="radio" id="f_sem_tempo" name="f_tempo" value=0 checked>
+            <label for="f_sem_tempo">Não tenho tempo</label>
+            <input type="radio" id="f_pouco_tempo" name="f_tempo" value=1>
+            <label for="f_pouco_tempo">1 hora</label>
+            <input type="radio" id="f_medio_tempo" name="f_tempo" value=2>
+            <label for="f_medio_tempo">2 horas</label>
+            <div class="radio-input">
+                <input type="radio" id="f_muito_tempo" name="f_tempo" value=3>
+                <label for="f_muito_tempo" class="mx-1">3 horas ou mais</label>
+            </div>
+
+            <label for="f_viagem" class="crud-question">Em caso de viagem, com quem ficará o animal?</label>
+            <input type="radio" id="f_nao_viagem" name="f_viagem" value="ninguem" checked>
+            <label for="f_nao_viagem">Não tenho com quem deixar</label>
+            <input type="radio" id="f_amigos" name="f_viagem" value="amigos">
+            <label for="f_Amigos">Amigos</label>
+            <div class="radio-input">
+                <input type="radio" id="f_familiares" name="f_viagem" value="familiares">
+                <label for="f_familiares" class="mx-1">Familiares</label>
+            </div>
+            <div class="radio-input">
+                <input type="radio" id="outros" name="f_viagem" value="outros">
+                <label for="outros" class="mx-1">Outros</label>
+            </div>
+            <input type="text" id="outros_value_viagem" name="f_viagem" class="text-input" style="display:none">
+
+            <label for="f_comentarios" class="crud-question">Comentários adicionais?</label>
+            <input type="text" for="f_comentarios" id="f_comentarios" class="text-input">
+
+
+        </form>
+        <!---->
+
+        <button id="btn-animal-passar" class="btn-small" onclick="submitFormulario()">Finalizar</button>
+        </div>
+</div>

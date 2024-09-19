@@ -1,0 +1,229 @@
+<html>
+<head>
+<meta content="text/html; charset = UTF-8" http-equiv="content-type">
+<title>Controle de Estoque</title>
+</head>
+
+<script type="text/javascript">
+
+function confirmarDeleteProduto(id, descricao, preco) {  
+	
+    if (confirm('Confirmar a exclusão do produto [' + descricao + '] (ID ' + id + ') com preço R$ ' + preco)) {  
+        location.href = '/produto/delete/' + id;
+    }
+}
+function onLoad() {
+    if(document.getElementById("msg").value != ""){
+      alert(document.getElementById("msg").value);
+    }
+}
+</script>
+
+
+<body onload="onLoad()">
+	<h1>Controle de Estoque</h1>
+	<input type="hidden" id="msg" name="msg" value="">
+    <UM-PRODUTO>
+	<br>
+	<LISTAR-PRODUTO>
+	<style>
+		* {
+		  margin: 0;
+		  padding: 0;
+		  font-family: "Poppins", sans-serif;
+		}
+
+		/* Declaração de variáveis */
+
+		:root {
+		  --cor_primaria: #53815A;
+		  /* versao mais escura -> #21472f */
+		  --cor_secundaria: #FFF;
+		  --grey: #B0B0B0;
+		  --dark_green: #21472f;
+		}
+
+		body {
+		  position: relative;
+		  min-height: 200vh;
+		}
+		header {
+		  margin: 0px;
+		  width: 100%;
+		  overflow: hidden;
+		  height: 5rem;
+		  background-color: var(--cor_primaria);
+		  display: flex;
+		  justify-content: space-between;
+		  align-items: center;
+
+		}
+
+		.pages {
+		  display: flex;
+		  align-items: center;
+		}
+
+		.pages a {
+		  font-size: 20px;
+		  color: white;
+		  text-decoration: none;
+		  /* text-align: 10px; */
+		}
+
+		.pages span {
+		  margin: 0 15px;
+		}
+
+		.home-btn {
+		  display: flex;
+		  gap: 10px;
+		}
+
+		.home-btn img {
+		  height: 50px;
+		  width: 50px;
+		}
+
+		a.active-page {
+		  color: var(--cor_secundaria);
+		}
+
+		a.inactive-page {
+		  color: var(--grey);
+		}
+
+		a.inactive-page:hover {
+		  color: var(--cor_secundaria);
+		}
+
+		span.divider {
+		  color: var(--grey);
+		}
+
+		/* ----------------------- Estilo footer ----------------------- */
+
+		footer {
+		  margin: 0px;
+		  width: 100%;
+		  overflow: hidden;
+		  height: 40vh;
+		  background-color: var(--cor_primaria);
+		  position: absolute;
+		  bottom: 0;
+		}
+
+		div#footer-itens {
+		  margin-top: 10px;
+		  width: 100%;
+		  height: 30vh;
+		  background-color: var(--cor_primaria);
+		  display: flex;
+		}
+
+		div.contatos {
+		  width: 30%;
+		  margin-right: 6%;
+		}
+
+		div.contatos>p {
+		  margin-bottom: 1%;
+		}
+
+		div.sobre-nos {
+		  width: 50%;
+		  margin-right: 6%;
+		}
+
+		div.acesso-rapido {
+		  width: 30%;
+		  margin-right: 6%;
+		}
+
+		div.acesso-rapido>a {
+		  margin-bottom: 1%;
+		  display: block;
+		  text-decoration: none;
+		  color: black;
+		  font-size: medium;
+		}
+
+		div#footer-itens>* h5 {
+		  font-size: x-large;
+		  font-weight: bold;
+		}
+
+		div.acesso-rapido>a:hover {
+		  text-decoration: none;
+		  color: var(--grey);
+		}
+
+		p#footer-cp {
+		  width: 100%;
+		  margin-bottom: 0%;
+		  display: block;
+		  text-align: center;
+		  font-weight: bold;
+		}
+
+		.footerPaginaGrande {
+		  position:relative;
+		}
+
+
+		/* ----------------------- End Estilo footer ----------------------- */
+
+		
+		div#adocao-titulo {
+		  width: 100%;
+		  border-top-left-radius: 10px;
+		  border-top-right-radius: 10px;
+		  background-color: var(--cor_primaria);
+		  outline: 1px solid black;
+		  text-align: center;
+		  padding: 2px;
+		  font-weight: bold;
+		  font-size:large;
+		  color:white
+		}
+		div#adocao-form {
+		  padding: 1%;
+		  height: 100%;
+		  width: 100%;
+		  display: flex;
+		  justify-content: space-between;
+		  align-items: center;
+		}
+
+		div#adocao-form > form {
+		  margin: 1% 1%
+		}
+
+		div#adocao-form > form {
+		  margin: 1% 1%
+		}
+		div#adocao-form >* label.crud-question{
+		  font-size:medium;
+		  display: block;
+		}
+		div#adocao-form >* label{
+		  font-size: smaller;
+		}
+		div#adocao-form >* input.text-input {
+		  border-radius: 10px;
+		  height: 30px;
+		  height: 25px;
+		  width: 75%;
+		  padding: 2px;
+		  padding: 5px;
+		  font-size: small;
+		  box-sizing: border-box;
+		  border: 2px solid #ccc;
+		}
+		div.radio-input{
+		  display: inline-flex;
+		}
+
+</style>
+</body>
+</html>
