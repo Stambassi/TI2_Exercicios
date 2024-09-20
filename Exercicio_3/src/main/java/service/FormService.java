@@ -27,7 +27,7 @@ public class FormService {
 
 	
 	public void makeForm() {
-		makeForm(FORM_INSERT, new Form(), FORM_ORDERBY_STATUS);
+		makeForm(FORM_INSERT, new Form(), FORM_ORDERBY_ID_FORM);
 	}
 
 	
@@ -57,20 +57,23 @@ public class FormService {
 			umProduto += "\t<br>";			
 		}
 		
-		if(tipo == FORM_INSERT || tipo == FORM_UPDATE) {
+		if(tipo == FORM_INSERT) {
+			try{
+				Scanner entrada = new Scanner(new File("formulario.html"));
+			    while(entrada.hasNext()){
+			    	umProduto += (entrada.nextLine() + "\n");
+			    }
+			    entrada.close();
+			}  catch (Exception e) { System.out.println(e.getMessage()); }
+		}
+		
+		else if(tipo == FORM_UPDATE) {
 			String action = "/produto/";
 			String name, moradia, buttonLabel;
-			if (tipo == FORM_INSERT){
-				action += "insert";
-				name = "Inserir Form";
-				moradia = "Casa, Apartamento, ...";
-				buttonLabel = "Inserir";
-			} else {
-				action += "update/" + produto.getIdForm();
-				name = "Atualizar Form (ID " + produto.getIdForm() + ")";
-				moradia = produto.getMoradia();
-				buttonLabel = "Atualizar";
-			}
+			action += "update/" + produto.getIdForm();
+			name = "Atualizar Form (ID " + produto.getIdForm() + ")";
+			moradia = produto.getMoradia();
+			buttonLabel = "Atualizar";
 			umProduto += "\t<form class=\"form--register\" action=\"" + action + "\" method=\"post\" id=\"form-add\">";
 			umProduto += "\t<table width=\"80%\" bgcolor=\"#f3f3f3\" align=\"center\">";
 			umProduto += "\t\t<tr>";
@@ -88,7 +91,6 @@ public class FormService {
 			umProduto += "\t\t\t<td>&nbsp;Disponibilidade: <input class=\"input--register\" type=\"text\" name=\"f_tempo\" value=\""+ produto.getDisponibilidade() + "\"></td>";
 			umProduto += "\t\t\t<td>Em caso de viagem, onde o animal ficaria: <input class=\"input--register\" type=\"text\" name=\"f_viagem\" value=\""+ produto.getViagem() + "\"></td>";
 			umProduto += "\t\t\t<td>Comentarios: <input class=\"input--register\" type=\"text\" name=\"f_comentarios\" value=\""+ produto.getComentarios() + "\"></td>";
-
 			umProduto += "\t\t\t<td align=\"center\"><input type=\"submit\" value=\""+ buttonLabel +"\" class=\"input--main__style input--button\"></td>";
 			umProduto += "\t\t</tr>";
 			umProduto += "\t</table>";
@@ -158,7 +160,7 @@ public class FormService {
 	public Object insert(Request request, Response response) {
 		int id_a = 1;
 		int id_u = 1;
-		int status = 2;
+		int this_status = 2;
 		boolean visitas = Boolean.parseBoolean(request.queryParams("f_visita_ong"));
 		boolean exp = Boolean.parseBoolean(request.queryParams("f_exp"));
 		String moradia = request.queryParams("f_residencia");
@@ -169,13 +171,13 @@ public class FormService {
 		
 		String resp = "";
 		
-		Form f = new Form(-1,id_a,id_u,status,visitas,exp,moradia,disponibilidade,viagem,comentarios);
+		Form f = new Form(-1,id_a,id_u,this_status,visitas,exp,moradia,disponibilidade,viagem,comentarios);
 
 		if(formDAO.insert(f) == true) {
-            resp = "Form (" + status + ") inserido!";
+            resp = "Form (" + comentarios + ") inserido!";
             response.status(201); // 201 Created
 		} else {
-			resp = "Form (" + status + ") não inserido!";
+			resp = "Form (" + comentarios + ") não inserido!";
 			response.status(404); // 404 Not found
 		}
 			
